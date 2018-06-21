@@ -1,0 +1,61 @@
+{
+  "name": "ch-1-getting-started-with-docker",
+  "version": "1.0.0",
+  "description": "Just building a simple node.js container.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch-node": "nodemon index.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-ts": "tsc-watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbassroller/cloud-native-javascript-chapters.git"
+  },
+  "keywords": [
+    "cloud",
+    "native",
+    "javascript"
+  ],
+  "author": "Michael Chavez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bigbassroller/cloud-native-javascript-chapters/issues"
+  },
+  "homepage": "https://github.com/bigbassroller/cloud-native-javascript-chapters#readme",
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "@types/bcryptjs": "^2.4.1",
+    "@types/jsonwebtoken": "^7.2.6",
+    "bcryptjs": "^2.4.3",
+    "config": "^1.30.0",
+    "glob": "^7.1.2",
+    "jsonwebtoken": "^8.2.1",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-combine-routers": "^3.0.0",
+    "koa-compose": "^4.0.0",
+    "koa-cors": "0.0.16",
+    "koa-helmet": "^4.0.0",
+    "koa-jwt": "^3.3.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mongodb": "^3.0.5",
+    "mongoose": "^5.0.13"
+  },
+  "devDependencies": {
+    "@types/async": "^2.0.49",
+    "@types/koa": "^2.0.45",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-json": "^2.0.18",
+    "@types/mongodb": "^3.0.13",
+    "@types/mongoose": "^5.0.9",
+    "@types/node": "^9.6.2",
+    "concurrently": "^3.5.1",
+    "eslint": "^4.19.1",
+    "nodemon": "^1.17.3",
+    "tsc-watch": "^1.0.17"
+  }
+}

@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+ nginx-proxy:
+  image: jwilder/nginx-proxy
+  ports:
+    - "80:80"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+ mongo-db:
+  container_name: mongo-db
+  image: mongo
+  ports:
+   - 27017
+  volumes:
+   - ./env/mongo-db:/data/db
+  environment:
+   PORT: 27017
+ frontend:
+  container_name: frontend
+  build: 
+    context: ./
+    dockerfile: DockerfileFrontendDev
+  ports:
+    - "3000:3000"
+  volumes:
+    - ./frontend:/usr/src/app/
+  environment:
+   NODE_ENV: 'development'
+   PORT: 3000
+  command: npm run dev
+ api-server:
+  container_name: api-server
+  build: 
+    context: ./
+    dockerfile: DockerfileAPIDev
+  ports:
+    - "4000:4000"
+  volumes:
+    - ./api-server:/usr/src/app/
+  links:
+    - mongo-db
+  environment:
+   NODE_ENV: 'development'
+   MONGO_URL: mongodb://mongo-db:27017/mongo-db
+   PORT: 4000
